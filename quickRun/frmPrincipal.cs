@@ -42,7 +42,19 @@ namespace quickRun
             Console.WriteLine(resultado);
         }
 
-        private void IniciarBat() {
+        async private void Fechar()
+        {
+            HttpResponseMessage resposta = await client.PostAsync("http://localhost:4040/parar", null);
+
+            string resultado = await resposta.Content.ReadAsStringAsync();
+
+            lblSaida.Text = resultado;
+
+            Console.WriteLine(resultado);
+        }
+
+        private void IniciarBat()
+        {
             try
             {
                 string pasta = Path.Combine(AppContext.BaseDirectory, "api");
@@ -54,7 +66,7 @@ namespace quickRun
                 string caminhoCompleto = Path.Combine(pasta, "inicia-api.bat");
                 Console.WriteLine(caminhoCompleto);
 
-                string conteudo = 
+                string conteudo =
                     $"@echo off{Environment.NewLine}" +
                     $"cd /d {caminhoPasta}{Environment.NewLine}" +
                     $"if not exist node_modules (call npm install){Environment.NewLine}" +
@@ -73,11 +85,16 @@ namespace quickRun
             {
                 MessageBox.Show($"Erro encontrado: {ex.GetType().Name}\n\nMensagem: {ex.Message}");
             }
-            
+
         }
         private void btnIniciar_Click(object sender, EventArgs e)
         {
             Iniciar();
+        }
+
+        private void btnFechar_Click(object sender, EventArgs e)
+        {
+            Fechar();
         }
     }
 }
