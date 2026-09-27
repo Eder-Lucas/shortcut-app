@@ -23,6 +23,22 @@ app.get('/', (req, res) => {
     })
 })
 
+app.post('/parar', (req, res) => {
+    if (processo != null) {
+        processo.kill()
+
+        res.json({
+            mensagem: "Processo encerrado"
+        })
+        console.log(processo)
+    }
+    else {
+        res.json({
+            mensagem: "Não há processo aberto"
+        })
+    }
+})
+
 app.post('/iniciar', (req, res) => {
     const caminho = path.resolve(dirname, '../script/atalho.exe')
 
