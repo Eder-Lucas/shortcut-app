@@ -14,6 +14,9 @@ app.use(cors({
     origin: "http://localhost:4040"
 }))
 
+let processoAberto = false
+let processo = null
+
 app.get('/', (req, res) => {
     res.json({
         mensagem: "teste"
@@ -22,17 +25,28 @@ app.get('/', (req, res) => {
 
 app.post('/iniciar', (req, res) => {
     const caminho = path.resolve(dirname, '../script/atalho.exe')
-    const processo = spawn(caminho)
 
-    processo.on('error', (err) => {
-        console.error('Falha ao executar o arquivo:', err.message)
-    })
+    if (processoAberto) {
+        res.json({
+            mensagem: "o processo já está aberto. PID: " + processo.pid
+        })
+    }
+    else {
+        processo = spawn(caminho)
 
-    console.log(`pid: ${processo.pid}`)
+        processo.on('error', (err) => {
+            console.error('Falha ao executar o arquivo:', err.message)
+        })
 
-    res.json({
-        mensagem: `processo rodando: ${processo.pid}`
-    })
+        res.json({
+            mensagem: `processo rodando: ${processo.pid}`
+        })
+        processoAberto = true
+
+        console.log(`pid: ${processo.pid}`)
+    }
+
+    console.log(`processo: ${processoAberto}`)
 })
 
 app.listen(PORT, '127.0.0.1', () => {
