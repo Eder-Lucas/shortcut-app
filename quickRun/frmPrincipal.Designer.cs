@@ -30,7 +30,7 @@
         {
             btnTeste = new Button();
             lblSaida = new Label();
-            button1 = new Button();
+            btnFechar = new Button();
             btnIniciar = new Button();
             SuspendLayout();
             // 
@@ -53,14 +53,15 @@
             lblSaida.TabIndex = 1;
             lblSaida.Text = "saida";
             // 
-            // button1
+            // btnFechar
             // 
-            button1.Location = new Point(299, 216);
-            button1.Name = "button1";
-            button1.Size = new Size(94, 29);
-            button1.TabIndex = 2;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
+            btnFechar.Location = new Point(299, 216);
+            btnFechar.Name = "btnFechar";
+            btnFechar.Size = new Size(94, 29);
+            btnFechar.TabIndex = 2;
+            btnFechar.Text = "fechar";
+            btnFechar.UseVisualStyleBackColor = true;
+            btnFechar.Click += btnFechar_Click;
             // 
             // btnIniciar
             // 
@@ -78,7 +79,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(btnIniciar);
-            Controls.Add(button1);
+            Controls.Add(btnFechar);
             Controls.Add(lblSaida);
             Controls.Add(btnTeste);
             Name = "frmPrincipal";
@@ -92,7 +93,7 @@
 
         private Button btnTeste;
         private Label lblSaida;
-        private Button button1;
+        private Button btnFechar;
         private Button btnIniciar;
     }
 }
