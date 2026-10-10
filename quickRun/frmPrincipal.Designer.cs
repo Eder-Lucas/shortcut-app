@@ -32,11 +32,12 @@
             lblSaida = new Label();
             btnFechar = new Button();
             btnIniciar = new Button();
+            chkAuto = new CheckBox();
             SuspendLayout();
             // 
             // btnTeste
             // 
-            btnTeste.Location = new Point(441, 216);
+            btnTeste.Location = new Point(299, 146);
             btnTeste.Name = "btnTeste";
             btnTeste.Size = new Size(94, 29);
             btnTeste.TabIndex = 0;
@@ -65,7 +66,7 @@
             // 
             // btnIniciar
             // 
-            btnIniciar.Location = new Point(446, 110);
+            btnIniciar.Location = new Point(299, 181);
             btnIniciar.Name = "btnIniciar";
             btnIniciar.Size = new Size(94, 29);
             btnIniciar.TabIndex = 3;
@@ -73,11 +74,22 @@
             btnIniciar.UseVisualStyleBackColor = true;
             btnIniciar.Click += btnIniciar_Click;
             // 
+            // chkAuto
+            // 
+            chkAuto.AutoSize = true;
+            chkAuto.Location = new Point(410, 146);
+            chkAuto.Name = "chkAuto";
+            chkAuto.Size = new Size(192, 24);
+            chkAuto.TabIndex = 4;
+            chkAuto.Text = "Iniciar automaticamente";
+            chkAuto.UseVisualStyleBackColor = true;
+            // 
             // frmPrincipal
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(627, 268);
+            Controls.Add(chkAuto);
             Controls.Add(btnIniciar);
             Controls.Add(btnFechar);
             Controls.Add(lblSaida);
@@ -95,5 +107,6 @@
         private Label lblSaida;
         private Button btnFechar;
         private Button btnIniciar;
+        private CheckBox chkAuto;
     }
 }
