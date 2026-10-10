@@ -1,4 +1,5 @@
 import express from 'express'
+import database from 'better-sqlite3'
 import cors from 'cors'
 import { spawn } from 'node:child_process'
 import path from 'node:path'
@@ -16,6 +17,30 @@ app.use(cors({
 
 let processoAberto = false
 let processo = null
+
+const db = new database(path.resolve(dirname, './database.db'))
+
+async function startDataBase() {
+    
+    db.exec(`
+        CREATE TABLE IF NOT EXISTS config (
+            id INTEGER PRIMARY KEY,
+            iniciar BOOLEAN NOT NULL DEFAULT 1
+        )
+    `)
+
+    db.prepare(`
+        INSERT OR IGNORE INTO config (id, iniciar) VALUES (?, ?)
+    `).run(1, 1)
+}
+
+async function getConfigStart() {
+    const configIniciar = db.prepare(`
+        SELECT iniciar FROM config WHERE id == 1
+    `).get()
+
+    return configIniciar.iniciar === 1
+} 
 
 app.get('/', (req, res) => {
     res.json({
@@ -42,15 +67,16 @@ app.post('/parar', (req, res) => {
     }
 })
 
-app.post('/iniciar', (req, res) => {
+function iniciarProcesso() {
     const caminho = path.resolve(dirname, '../script/atalho.exe')
     console.log(processo)
 
     if (processoAberto) {
-        res.json({
-            mensagem: "o processo já está aberto. PID: " + processo.pid
-        })
         console.log(processoAberto)
+
+        return {
+            mensagem: "o processo já está aberto. PID: " + processo.pid
+        }
     }
     else {
         processo = spawn(caminho)
@@ -59,17 +85,36 @@ app.post('/iniciar', (req, res) => {
             console.error('Falha ao executar o arquivo:', err.message)
         })
 
-        res.json({
-            mensagem: `processo rodando: ${processo.pid}`
-        })
         processoAberto = true
 
         console.log(`pid: ${processo.pid}`)
+
+        return {
+            mensagem: `processo rodando: ${processo.pid}`
+        }        
     }
 
     console.log(`processo: ${processoAberto}`)
+}
+
+app.post('/iniciar', (req, res) => {
+    const resposta = iniciarProcesso()
+    res.json(resposta)
 })
 
-app.listen(PORT, '0.0.0.0', () => {
+app.listen(PORT, '0.0.0.0', async () => {
+    await startDataBase()
+
+    const start = await getConfigStart()
+
     console.log(`Servidor rodando: ${PORT}`)
+
+    if (start) {
+        iniciarProcesso()
+        console.log("Iniciando processo automaticamente")
+    }
+    
+    
+    /*const caminho = path.resolve(dirname, './')
+    console.log(caminho)*/
 })
