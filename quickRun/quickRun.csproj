@@ -13,7 +13,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="api\server.js">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="script\atalho.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
