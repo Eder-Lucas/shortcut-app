@@ -31,6 +31,9 @@ app.post('/parar', (req, res) => {
             mensagem: "Processo encerrado"
         })
         console.log(processo)
+
+        processo = null
+        processoAberto = false
     }
     else {
         res.json({
@@ -41,11 +44,13 @@ app.post('/parar', (req, res) => {
 
 app.post('/iniciar', (req, res) => {
     const caminho = path.resolve(dirname, '../script/atalho.exe')
+    console.log(processo)
 
     if (processoAberto) {
         res.json({
             mensagem: "o processo já está aberto. PID: " + processo.pid
         })
+        console.log(processoAberto)
     }
     else {
         processo = spawn(caminho)
@@ -65,6 +70,6 @@ app.post('/iniciar', (req, res) => {
     console.log(`processo: ${processoAberto}`)
 })
 
-app.listen(PORT, '127.0.0.1', () => {
+app.listen(PORT, '0.0.0.0', () => {
     console.log(`Servidor rodando: ${PORT}`)
 })
