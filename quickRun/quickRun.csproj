@@ -10,13 +10,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Update="api\package.json">
+    <None Include="api\**\*">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="api\server.js">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="script\atalho.exe">
+    <None Include="script\**\*">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
