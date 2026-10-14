@@ -34,13 +34,17 @@ async function startDataBase() {
     `).run(1, 1)
 }
 
-async function getConfigStart() {
+function getConfigStart() {
     const configIniciar = db.prepare(`
         SELECT iniciar FROM config WHERE id == 1
     `).get()
 
     return configIniciar.iniciar === 1
 } 
+
+app.get('/config', (req, res) => {
+    res.send(getConfigStart())
+})
 
 app.get('/', (req, res) => {
     res.json({
@@ -87,6 +91,7 @@ function iniciarProcesso() {
 
         processoAberto = true
 
+        console.log(`processo: ${processoAberto}`)
         console.log(`pid: ${processo.pid}`)
 
         return {
@@ -94,7 +99,7 @@ function iniciarProcesso() {
         }        
     }
 
-    console.log(`processo: ${processoAberto}`)
+   
 }
 
 app.post('/iniciar', (req, res) => {
@@ -113,6 +118,8 @@ app.listen(PORT, '0.0.0.0', async () => {
         iniciarProcesso()
         console.log("Iniciando processo automaticamente")
     }
+
+    console.log(getConfigStart())
     
     
     /*const caminho = path.resolve(dirname, './')
