@@ -3,12 +3,12 @@
     partial class frmPrincipal
     {
         /// <summary>
-        ///  Required designer variable.
+        /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        ///  Clean up any resources being used.
+        /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
@@ -23,90 +23,90 @@
         #region Windows Form Designer generated code
 
         /// <summary>
-        ///  Required method for Designer support - do not modify
-        ///  the contents of this method with the code editor.
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
-            btnTeste = new Button();
-            lblSaida = new Label();
-            btnFechar = new Button();
-            btnIniciar = new Button();
             chkAuto = new CheckBox();
+            btnIniciar = new Button();
+            btnFechar = new Button();
+            lblSaida = new Label();
+            btnTeste = new Button();
             SuspendLayout();
-            // 
-            // btnTeste
-            // 
-            btnTeste.Location = new Point(299, 146);
-            btnTeste.Name = "btnTeste";
-            btnTeste.Size = new Size(94, 29);
-            btnTeste.TabIndex = 0;
-            btnTeste.Text = "Testar";
-            btnTeste.UseVisualStyleBackColor = true;
-            btnTeste.Click += btnTeste_Click;
-            // 
-            // lblSaida
-            // 
-            lblSaida.AutoSize = true;
-            lblSaida.Location = new Point(12, 9);
-            lblSaida.Name = "lblSaida";
-            lblSaida.Size = new Size(44, 20);
-            lblSaida.TabIndex = 1;
-            lblSaida.Text = "saida";
-            // 
-            // btnFechar
-            // 
-            btnFechar.Location = new Point(299, 216);
-            btnFechar.Name = "btnFechar";
-            btnFechar.Size = new Size(94, 29);
-            btnFechar.TabIndex = 2;
-            btnFechar.Text = "fechar";
-            btnFechar.UseVisualStyleBackColor = true;
-            btnFechar.Click += btnFechar_Click;
-            // 
-            // btnIniciar
-            // 
-            btnIniciar.Location = new Point(299, 181);
-            btnIniciar.Name = "btnIniciar";
-            btnIniciar.Size = new Size(94, 29);
-            btnIniciar.TabIndex = 3;
-            btnIniciar.Text = "Iniciar";
-            btnIniciar.UseVisualStyleBackColor = true;
-            btnIniciar.Click += btnIniciar_Click;
             // 
             // chkAuto
             // 
             chkAuto.AutoSize = true;
-            chkAuto.Location = new Point(410, 146);
+            chkAuto.Location = new Point(308, 143);
             chkAuto.Name = "chkAuto";
             chkAuto.Size = new Size(192, 24);
-            chkAuto.TabIndex = 4;
+            chkAuto.TabIndex = 19;
             chkAuto.Text = "Iniciar automaticamente";
             chkAuto.UseVisualStyleBackColor = true;
             // 
-            // frmPrincipal
+            // btnIniciar
+            // 
+            btnIniciar.Location = new Point(197, 178);
+            btnIniciar.Name = "btnIniciar";
+            btnIniciar.Size = new Size(94, 29);
+            btnIniciar.TabIndex = 18;
+            btnIniciar.Text = "Iniciar";
+            btnIniciar.UseVisualStyleBackColor = true;
+            btnIniciar.Click += btnIniciar_Click;
+            // 
+            // btnFechar
+            // 
+            btnFechar.Location = new Point(197, 213);
+            btnFechar.Name = "btnFechar";
+            btnFechar.Size = new Size(94, 29);
+            btnFechar.TabIndex = 17;
+            btnFechar.Text = "fechar";
+            btnFechar.UseVisualStyleBackColor = true;
+            btnFechar.Click += btnFechar_Click;
+            // 
+            // lblSaida
+            // 
+            lblSaida.AutoSize = true;
+            lblSaida.Location = new Point(14, 14);
+            lblSaida.Name = "lblSaida";
+            lblSaida.Size = new Size(44, 20);
+            lblSaida.TabIndex = 16;
+            lblSaida.Text = "saida";
+            // 
+            // btnTeste
+            // 
+            btnTeste.Location = new Point(197, 143);
+            btnTeste.Name = "btnTeste";
+            btnTeste.Size = new Size(94, 29);
+            btnTeste.TabIndex = 15;
+            btnTeste.Text = "Testar";
+            btnTeste.UseVisualStyleBackColor = true;
+            btnTeste.Click += btnTeste_Click;
+            // 
+            // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(627, 268);
+            ClientSize = new Size(514, 257);
             Controls.Add(chkAuto);
             Controls.Add(btnIniciar);
             Controls.Add(btnFechar);
             Controls.Add(lblSaida);
             Controls.Add(btnTeste);
-            Name = "frmPrincipal";
-            Text = "Form principal";
-            Load += frmPrincipal_Load;
+            Name = "Form1";
+            Text = "Form1";
+            Load += Form1_Load;
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private Button btnTeste;
-        private Label lblSaida;
-        private Button btnFechar;
-        private Button btnIniciar;
         private CheckBox chkAuto;
+        private Button btnIniciar;
+        private Button btnFechar;
+        private Label lblSaida;
+        private Button btnTeste;
     }
 }
