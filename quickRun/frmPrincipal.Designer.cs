@@ -94,9 +94,9 @@
             Controls.Add(btnFechar);
             Controls.Add(lblSaida);
             Controls.Add(btnTeste);
-            Name = "Form1";
-            Text = "Form1";
-            Load += Form1_Load;
+            Name = "frmPrincipal";
+            Text = "frmPrincipal";
+            Load += frmPrincipal_Load;
             ResumeLayout(false);
             PerformLayout();
         }
