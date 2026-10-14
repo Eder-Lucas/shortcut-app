@@ -1,5 +1,14 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Text;
+using System.Windows.Forms;
 using System.Net.Http;
 using System.IO;
+using System.Threading.Tasks;
+using System.Text.Json;
 
 namespace quickRun
 {
@@ -12,14 +21,27 @@ namespace quickRun
 
         private readonly HttpClient client = new();
 
-        private void frmPrincipal_Load(object sender, EventArgs e)
+        private async void frmPrincipal_Load(object sender, EventArgs e)
         {
             IniciarBat();
-        }
+
+            bool config = await Config();
+
+            chkAuto.Checked = config;
+        }      
 
         private void btnTeste_Click(object sender, EventArgs e)
         {
             Saida();
+        }
+
+        private async Task<bool> Config()
+        {
+            HttpResponseMessage resposta = await client.GetAsync("http://localhost:4040/config");
+
+            string resultado = await resposta.Content.ReadAsStringAsync();
+
+            return bool.Parse(resultado);
         }
 
         async private void Saida()
@@ -28,7 +50,8 @@ namespace quickRun
 
             string resultado = await resposta.Content.ReadAsStringAsync();
 
-            lblSaida.Text = resultado;
+            JsonDocument json = JsonDocument.Parse(resultado);
+            lblSaida.Text = json.RootElement.GetProperty("mensagem").GetString();
         }
 
         async private void Iniciar()
@@ -37,7 +60,8 @@ namespace quickRun
 
             string resultado = await resposta.Content.ReadAsStringAsync();
 
-            lblSaida.Text = resultado;
+            JsonDocument json = JsonDocument.Parse(resultado);
+            lblSaida.Text = json.RootElement.GetProperty("mensagem").GetString();
 
             Console.WriteLine(resultado);
         }
@@ -48,11 +72,13 @@ namespace quickRun
 
             string resultado = await resposta.Content.ReadAsStringAsync();
 
-            lblSaida.Text = resultado;
+            JsonDocument json = JsonDocument.Parse(resultado);
+            lblSaida.Text = json.RootElement.GetProperty("mensagem").GetString();
 
             Console.WriteLine(resultado);
         }
 
+        // Cria a inicialização da api, colocando um arquivo na inicilização do windows
         private void IniciarBat()
         {
             try
@@ -70,7 +96,7 @@ namespace quickRun
                     $"@echo off{Environment.NewLine}" +
                     $"cd /d {caminhoPasta}{Environment.NewLine}" +
                     $"if not exist node_modules (call npm install){Environment.NewLine}" +
-                    $"node server.js";
+                    $"pm2 start server.js";
 
                 Console.WriteLine(conteudo);
 
@@ -87,6 +113,7 @@ namespace quickRun
             }
 
         }
+
         private void btnIniciar_Click(object sender, EventArgs e)
         {
             Iniciar();
