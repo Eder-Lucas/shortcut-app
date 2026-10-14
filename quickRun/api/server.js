@@ -107,10 +107,10 @@ app.post('/iniciar', (req, res) => {
     res.json(resposta)
 })
 
-app.listen(PORT, '0.0.0.0', async () => {
+app.listen(PORT, '0.0.0.0', () => {
     await startDataBase()
 
-    const start = await getConfigStart()
+    const start = getConfigStart()
 
     console.log(`Servidor rodando: ${PORT}`)
 
