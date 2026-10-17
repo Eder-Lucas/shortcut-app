@@ -52,6 +52,27 @@ app.get('/', (req, res) => {
     })
 })
 
+app.post('/config/notStart', (req, res) => {
+    db.prepare(`
+        UPDATE config SET iniciar = 0 WHERE id == 1
+    `).run()
+
+    res.json({
+        mensagem: "Configuração alterada para não iniciar automaticamente"
+    })
+})
+
+app.post('/config/start', (req, res) => {
+    db.prepare(`
+        UPDATE config SET iniciar = 1 WHERE id == 1
+    `).run()
+
+    res.json({
+        mensagem: "Configuração alterada para iniciar automaticamente"
+    })
+})
+
+
 app.post('/parar', (req, res) => {
     if (processo != null) {
         processo.kill()
@@ -107,7 +128,7 @@ app.post('/iniciar', (req, res) => {
     res.json(resposta)
 })
 
-app.listen(PORT, '0.0.0.0', () => {
+app.listen(PORT, '0.0.0.0', async () => {
     await startDataBase()
 
     const start = getConfigStart()
