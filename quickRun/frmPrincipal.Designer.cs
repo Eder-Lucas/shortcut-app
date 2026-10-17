@@ -44,6 +44,7 @@
             chkAuto.TabIndex = 19;
             chkAuto.Text = "Iniciar automaticamente";
             chkAuto.UseVisualStyleBackColor = true;
+            chkAuto.CheckedChanged += chkAuto_CheckedChanged;
             // 
             // btnIniciar
             // 
@@ -84,7 +85,7 @@
             btnTeste.UseVisualStyleBackColor = true;
             btnTeste.Click += btnTeste_Click;
             // 
-            // Form1
+            // frmPrincipal
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
