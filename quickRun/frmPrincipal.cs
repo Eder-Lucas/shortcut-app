@@ -28,7 +28,7 @@ namespace quickRun
             bool config = await Config();
 
             chkAuto.Checked = config;
-        }      
+        }
 
         private void btnTeste_Click(object sender, EventArgs e)
         {
@@ -122,6 +122,41 @@ namespace quickRun
         private void btnFechar_Click(object sender, EventArgs e)
         {
             Fechar();
+        }
+
+        private async void chkAuto_CheckedChanged(object sender, EventArgs e)
+        {            
+            if (chkAuto.Checked)
+            {
+                chkAuto.Enabled = false;
+
+                HttpResponseMessage resposta = await client.PostAsync("http://localhost:4040/config/start", null);
+
+                string resultado = await resposta.Content.ReadAsStringAsync();
+
+                Console.WriteLine(resultado);
+
+                JsonDocument json = JsonDocument.Parse(resultado);
+                lblSaida.Text = json.RootElement.GetProperty("mensagem").GetString();
+            }
+
+            if (!chkAuto.Checked)
+            {
+                chkAuto.Enabled = false;
+
+                HttpResponseMessage resposta = await client.PostAsync("http://localhost:4040/config/notStart", null);
+
+                string resultado = await resposta.Content.ReadAsStringAsync();
+
+                Console.WriteLine(resultado);
+
+                JsonDocument json = JsonDocument.Parse(resultado);
+                lblSaida.Text = json.RootElement.GetProperty("mensagem").GetString();
+            }
+
+            await Task.Delay(1000);
+
+            chkAuto.Enabled = true;
         }
     }
 }
