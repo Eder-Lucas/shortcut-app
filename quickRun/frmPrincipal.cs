@@ -20,6 +20,7 @@ namespace quickRun
         }
 
         private readonly HttpClient client = new();
+        bool processando = false;
 
         private async void frmPrincipal_Load(object sender, EventArgs e)
         {
@@ -28,18 +29,22 @@ namespace quickRun
             chkAuto.AutoCheck = false;
             chkAuto.ForeColor = Color.FromArgb(138, 138, 138);
 
+            processando = true;
+
             bool config = await Config();
             chkAuto.Checked = config;
 
             chkAuto.AutoCheck = true;
             chkAuto.ForeColor = Color.White;
+
+            // Evita que o evento click do ChechBox seja disparado ao carregar o estado inicial do CheckBox
+            await Task.Delay(100);
+            processando = false;
         }
 
         private void btnTeste_Click(object sender, EventArgs e)
         {
-            btnTeste.BackColor = Color.Red;
             Saida();
-            btnTeste.BackColor = Color.FromArgb(36, 36, 36);
         }
 
         private async Task<bool> Config()
@@ -131,7 +136,6 @@ namespace quickRun
             Fechar();
         }
 
-        bool processando = false;
         private async void chkAuto_CheckedChanged(object sender, EventArgs e)
         {
             if (processando) return;
