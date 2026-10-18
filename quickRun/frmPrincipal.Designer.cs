@@ -29,74 +29,97 @@
         private void InitializeComponent()
         {
             chkAuto = new CheckBox();
-            btnIniciar = new Button();
-            btnFechar = new Button();
             lblSaida = new Label();
-            btnTeste = new Button();
+            btnTeste = new Label();
+            btnIniciar = new Label();
+            btnFechar = new Label();
             SuspendLayout();
             // 
             // chkAuto
             // 
             chkAuto.AutoSize = true;
+            chkAuto.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            chkAuto.ForeColor = Color.White;
             chkAuto.Location = new Point(308, 143);
             chkAuto.Name = "chkAuto";
-            chkAuto.Size = new Size(192, 24);
+            chkAuto.Size = new Size(205, 23);
             chkAuto.TabIndex = 19;
             chkAuto.Text = "Iniciar automaticamente";
             chkAuto.UseVisualStyleBackColor = true;
             chkAuto.CheckedChanged += chkAuto_CheckedChanged;
             // 
-            // btnIniciar
-            // 
-            btnIniciar.Location = new Point(197, 178);
-            btnIniciar.Name = "btnIniciar";
-            btnIniciar.Size = new Size(94, 29);
-            btnIniciar.TabIndex = 18;
-            btnIniciar.Text = "Iniciar";
-            btnIniciar.UseVisualStyleBackColor = true;
-            btnIniciar.Click += btnIniciar_Click;
-            // 
-            // btnFechar
-            // 
-            btnFechar.Location = new Point(197, 213);
-            btnFechar.Name = "btnFechar";
-            btnFechar.Size = new Size(94, 29);
-            btnFechar.TabIndex = 17;
-            btnFechar.Text = "fechar";
-            btnFechar.UseVisualStyleBackColor = true;
-            btnFechar.Click += btnFechar_Click;
-            // 
             // lblSaida
             // 
             lblSaida.AutoSize = true;
+            lblSaida.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblSaida.ForeColor = Color.White;
             lblSaida.Location = new Point(14, 14);
             lblSaida.Name = "lblSaida";
-            lblSaida.Size = new Size(44, 20);
+            lblSaida.Size = new Size(48, 19);
             lblSaida.TabIndex = 16;
             lblSaida.Text = "saida";
             // 
             // btnTeste
             // 
-            btnTeste.Location = new Point(197, 143);
+            btnTeste.AutoSize = true;
+            btnTeste.BackColor = Color.FromArgb(36, 36, 36);
+            btnTeste.BorderStyle = BorderStyle.Fixed3D;
+            btnTeste.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnTeste.ForeColor = Color.WhiteSmoke;
+            btnTeste.Location = new Point(201, 139);
             btnTeste.Name = "btnTeste";
-            btnTeste.Size = new Size(94, 29);
-            btnTeste.TabIndex = 15;
+            btnTeste.Padding = new Padding(21, 3, 21, 3);
+            btnTeste.Size = new Size(96, 27);
+            btnTeste.TabIndex = 20;
             btnTeste.Text = "Testar";
-            btnTeste.UseVisualStyleBackColor = true;
             btnTeste.Click += btnTeste_Click;
+            // 
+            // btnIniciar
+            // 
+            btnIniciar.AutoSize = true;
+            btnIniciar.BackColor = Color.FromArgb(36, 36, 36);
+            btnIniciar.BorderStyle = BorderStyle.Fixed3D;
+            btnIniciar.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnIniciar.ForeColor = Color.WhiteSmoke;
+            btnIniciar.Location = new Point(201, 180);
+            btnIniciar.Name = "btnIniciar";
+            btnIniciar.Padding = new Padding(20, 3, 20, 3);
+            btnIniciar.Size = new Size(97, 27);
+            btnIniciar.TabIndex = 20;
+            btnIniciar.Text = "Iniciar";
+            btnIniciar.Click += btnIniciar_Click;
+            // 
+            // btnFechar
+            // 
+            btnFechar.AutoSize = true;
+            btnFechar.BackColor = Color.FromArgb(36, 36, 36);
+            btnFechar.BorderStyle = BorderStyle.FixedSingle;
+            btnFechar.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnFechar.ForeColor = Color.WhiteSmoke;
+            btnFechar.Location = new Point(201, 221);
+            btnFechar.Name = "btnFechar";
+            btnFechar.Padding = new Padding(17, 3, 17, 3);
+            btnFechar.Size = new Size(97, 27);
+            btnFechar.TabIndex = 20;
+            btnFechar.Text = "Fechar";
+            btnFechar.Click += btnFechar_Click;
             // 
             // frmPrincipal
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(51, 51, 51);
             ClientSize = new Size(514, 257);
-            Controls.Add(chkAuto);
-            Controls.Add(btnIniciar);
             Controls.Add(btnFechar);
-            Controls.Add(lblSaida);
+            Controls.Add(btnIniciar);
             Controls.Add(btnTeste);
+            Controls.Add(chkAuto);
+            Controls.Add(lblSaida);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
             Name = "frmPrincipal";
-            Text = "frmPrincipal";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Shot Cut - Control Center";
             Load += frmPrincipal_Load;
             ResumeLayout(false);
             PerformLayout();
@@ -105,9 +128,9 @@
         #endregion
 
         private CheckBox chkAuto;
-        private Button btnIniciar;
-        private Button btnFechar;
         private Label lblSaida;
-        private Button btnTeste;
+        private Label btnTeste;
+        private Label btnIniciar;
+        private Label btnFechar;
     }
 }
