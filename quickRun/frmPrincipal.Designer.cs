@@ -63,7 +63,8 @@
             // 
             btnTeste.AutoSize = true;
             btnTeste.BackColor = Color.FromArgb(36, 36, 36);
-            btnTeste.BorderStyle = BorderStyle.Fixed3D;
+            btnTeste.BorderStyle = BorderStyle.FixedSingle;
+            btnTeste.Cursor = Cursors.Hand;
             btnTeste.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnTeste.ForeColor = Color.WhiteSmoke;
             btnTeste.Location = new Point(201, 139);
@@ -78,7 +79,8 @@
             // 
             btnIniciar.AutoSize = true;
             btnIniciar.BackColor = Color.FromArgb(36, 36, 36);
-            btnIniciar.BorderStyle = BorderStyle.Fixed3D;
+            btnIniciar.BorderStyle = BorderStyle.FixedSingle;
+            btnIniciar.Cursor = Cursors.Hand;
             btnIniciar.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnIniciar.ForeColor = Color.WhiteSmoke;
             btnIniciar.Location = new Point(201, 180);
@@ -94,6 +96,7 @@
             btnFechar.AutoSize = true;
             btnFechar.BackColor = Color.FromArgb(36, 36, 36);
             btnFechar.BorderStyle = BorderStyle.FixedSingle;
+            btnFechar.Cursor = Cursors.Hand;
             btnFechar.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnFechar.ForeColor = Color.WhiteSmoke;
             btnFechar.Location = new Point(201, 221);
