@@ -74,6 +74,8 @@
             btnTeste.TabIndex = 20;
             btnTeste.Text = "Testar";
             btnTeste.Click += btnTeste_Click;
+            btnTeste.MouseEnter += HoverBotoesEntrada;
+            btnTeste.MouseLeave += HoverBotoesSaida;
             // 
             // btnIniciar
             // 
@@ -90,6 +92,8 @@
             btnIniciar.TabIndex = 20;
             btnIniciar.Text = "Iniciar";
             btnIniciar.Click += btnIniciar_Click;
+            btnIniciar.MouseEnter += HoverBotoesEntrada;
+            btnIniciar.MouseLeave += HoverBotoesSaida;
             // 
             // btnFechar
             // 
@@ -106,6 +110,8 @@
             btnFechar.TabIndex = 20;
             btnFechar.Text = "Fechar";
             btnFechar.Click += btnFechar_Click;
+            btnFechar.MouseEnter += HoverBotoesEntrada;
+            btnFechar.MouseLeave += HoverBotoesSaida;
             // 
             // frmPrincipal
             // 

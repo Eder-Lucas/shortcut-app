@@ -25,7 +25,7 @@ namespace quickRun
         private async void frmPrincipal_Load(object sender, EventArgs e)
         {
             IniciarBat();
-           
+
             chkAuto.AutoCheck = false;
             chkAuto.ForeColor = Color.FromArgb(138, 138, 138);
 
@@ -121,7 +121,7 @@ namespace quickRun
 
         }
 
-        private static async void EfeitoClick(Control control) 
+        private static async void EfeitoClick(Control control)
         {
             if (control is Label lbl)
             {
@@ -138,15 +138,15 @@ namespace quickRun
         }
 
         private void btnIniciar_Click(object sender, EventArgs e)
-        {            
+        {
             Iniciar();
             EfeitoClick(btnIniciar);
         }
 
         private void btnFechar_Click(object sender, EventArgs e)
-        {           
+        {
             Fechar();
-           EfeitoClick(btnFechar);
+            EfeitoClick(btnFechar);
         }
 
         private async void chkAuto_CheckedChanged(object sender, EventArgs e)
@@ -190,6 +190,18 @@ namespace quickRun
             chkAuto.ForeColor = Color.White;
             processando = false;
             chkAuto.AutoCheck = true;
+        }
+
+        private void HoverBotoesEntrada(object sender, EventArgs e)
+        {
+            Control ctrl = (Control)sender;
+            ctrl.BackColor = Color.FromArgb(51, 51, 51);
+        }
+
+        private void HoverBotoesSaida(object sender, EventArgs e)
+        {
+            Control ctrl = (Control)sender;
+            ctrl.BackColor = Color.FromArgb(36, 36, 36);
         }
     }
 }
