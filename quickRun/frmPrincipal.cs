@@ -42,11 +42,6 @@ namespace quickRun
             processando = false;
         }
 
-        private void btnTeste_Click(object sender, EventArgs e)
-        {
-            Saida();
-        }
-
         private async Task<bool> Config()
         {
             HttpResponseMessage resposta = await client.GetAsync("http://localhost:4040/config");
@@ -126,14 +121,32 @@ namespace quickRun
 
         }
 
-        private void btnIniciar_Click(object sender, EventArgs e)
+        private static async void EfeitoClick(Control control) 
         {
+            if (control is Label lbl)
+            {
+                lbl.BackColor = Color.FromArgb(77, 77, 77);
+                await Task.Delay(50);
+                lbl.BackColor = Color.FromArgb(36, 36, 36);
+            }
+        }
+
+        private void btnTeste_Click(object sender, EventArgs e)
+        {
+            Saida();
+            EfeitoClick(btnTeste);
+        }
+
+        private void btnIniciar_Click(object sender, EventArgs e)
+        {            
             Iniciar();
+            EfeitoClick(btnIniciar);
         }
 
         private void btnFechar_Click(object sender, EventArgs e)
-        {
+        {           
             Fechar();
+           EfeitoClick(btnFechar);
         }
 
         private async void chkAuto_CheckedChanged(object sender, EventArgs e)
