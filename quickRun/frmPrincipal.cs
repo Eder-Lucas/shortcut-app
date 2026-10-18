@@ -24,15 +24,22 @@ namespace quickRun
         private async void frmPrincipal_Load(object sender, EventArgs e)
         {
             IniciarBat();
+           
+            chkAuto.AutoCheck = false;
+            chkAuto.ForeColor = Color.FromArgb(138, 138, 138);
 
             bool config = await Config();
-
             chkAuto.Checked = config;
+
+            chkAuto.AutoCheck = true;
+            chkAuto.ForeColor = Color.White;
         }
 
         private void btnTeste_Click(object sender, EventArgs e)
         {
+            btnTeste.BackColor = Color.Red;
             Saida();
+            btnTeste.BackColor = Color.FromArgb(36, 36, 36);
         }
 
         private async Task<bool> Config()
@@ -124,11 +131,17 @@ namespace quickRun
             Fechar();
         }
 
+        bool processando = false;
         private async void chkAuto_CheckedChanged(object sender, EventArgs e)
-        {            
+        {
+            if (processando) return;
+
+            chkAuto.ForeColor = Color.FromArgb(138, 138, 138);
+
             if (chkAuto.Checked)
             {
-                chkAuto.Enabled = false;
+                processando = true;
+                chkAuto.AutoCheck = false;
 
                 HttpResponseMessage resposta = await client.PostAsync("http://localhost:4040/config/start", null);
 
@@ -142,7 +155,8 @@ namespace quickRun
 
             if (!chkAuto.Checked)
             {
-                chkAuto.Enabled = false;
+                processando = true;
+                chkAuto.AutoCheck = false;
 
                 HttpResponseMessage resposta = await client.PostAsync("http://localhost:4040/config/notStart", null);
 
@@ -154,9 +168,11 @@ namespace quickRun
                 lblSaida.Text = json.RootElement.GetProperty("mensagem").GetString();
             }
 
-            await Task.Delay(1000);
+            await Task.Delay(1200);
 
-            chkAuto.Enabled = true;
+            chkAuto.ForeColor = Color.White;
+            processando = false;
+            chkAuto.AutoCheck = true;
         }
     }
 }
