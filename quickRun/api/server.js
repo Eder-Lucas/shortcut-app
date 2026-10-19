@@ -48,7 +48,7 @@ app.get('/config', (req, res) => {
 
 app.get('/', (req, res) => {
     res.json({
-        mensagem: "teste"
+        mensagem: "API em execução!"
     })
 })
 
