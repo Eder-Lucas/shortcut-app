@@ -25,6 +25,7 @@ namespace quickRun
         private async void frmPrincipal_Load(object sender, EventArgs e)
         {
             IniciarBat();
+            Saida();
 
             chkAuto.AutoCheck = false;
             chkAuto.ForeColor = Color.FromArgb(138, 138, 138);
@@ -68,7 +69,7 @@ namespace quickRun
             string resultado = await resposta.Content.ReadAsStringAsync();
 
             JsonDocument json = JsonDocument.Parse(resultado);
-            lblSaida.Text = json.RootElement.GetProperty("mensagem").GetString();
+            lbl_processo.Text = json.RootElement.GetProperty("mensagem").GetString();
 
             Console.WriteLine(resultado);
         }
@@ -80,7 +81,7 @@ namespace quickRun
             string resultado = await resposta.Content.ReadAsStringAsync();
 
             JsonDocument json = JsonDocument.Parse(resultado);
-            lblSaida.Text = json.RootElement.GetProperty("mensagem").GetString();
+            lbl_processo.Text = json.RootElement.GetProperty("mensagem").GetString();
 
             Console.WriteLine(resultado);
         }
