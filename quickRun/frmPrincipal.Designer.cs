@@ -33,6 +33,8 @@
             btnTeste = new Label();
             btnIniciar = new Label();
             btnFechar = new Label();
+            lbl_processo = new Label();
+            lbl_fechar = new Label();
             SuspendLayout();
             // 
             // chkAuto
@@ -113,6 +115,26 @@
             btnFechar.MouseEnter += HoverBotoesEntrada;
             btnFechar.MouseLeave += HoverBotoesSaida;
             // 
+            // lbl_processo
+            // 
+            lbl_processo.AutoSize = true;
+            lbl_processo.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lbl_processo.ForeColor = Color.White;
+            lbl_processo.Location = new Point(12, 55);
+            lbl_processo.Name = "lbl_processo";
+            lbl_processo.Size = new Size(0, 19);
+            lbl_processo.TabIndex = 16;
+            // 
+            // lbl_fechar
+            // 
+            lbl_fechar.AutoSize = true;
+            lbl_fechar.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lbl_fechar.ForeColor = Color.White;
+            lbl_fechar.Location = new Point(12, 103);
+            lbl_fechar.Name = "lbl_fechar";
+            lbl_fechar.Size = new Size(0, 19);
+            lbl_fechar.TabIndex = 16;
+            // 
             // frmPrincipal
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -123,6 +145,8 @@
             Controls.Add(btnIniciar);
             Controls.Add(btnTeste);
             Controls.Add(chkAuto);
+            Controls.Add(lbl_fechar);
+            Controls.Add(lbl_processo);
             Controls.Add(lblSaida);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
@@ -141,5 +165,7 @@
         private Label btnTeste;
         private Label btnIniciar;
         private Label btnFechar;
+        private Label lbl_processo;
+        private Label lbl_fechar;
     }
 }
